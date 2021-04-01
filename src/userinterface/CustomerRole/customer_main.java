@@ -233,7 +233,7 @@ public class customer_main extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Order o=new Order();
-        int x = 1 + (int) (Math.random() * 10);
+        int x = 1 + (int) (Math.random() * 100);
         o.setId(x);
         o.setCustomer(userAccount.getUsername());
         o.setRestaurant(mainrestaurant);
@@ -250,6 +250,9 @@ public class customer_main extends javax.swing.JPanel {
             f.put(one, two);
             
         }
+        OrderDirectory dire=ecosystem.getOrderdirectory();
+        ArrayList<Order> order=dire.getOd();
+        order.add(o);
         System.out.println(o.getCustomer());
         System.out.println(o.getRestaurant());
         System.out.println(o.getDelivaryman());
@@ -258,9 +261,7 @@ public class customer_main extends javax.swing.JPanel {
         for (String key: f.keySet()) {
         System.out.println("key : " + key);
         System.out.println("value : " + f.get(key));
-        OrderDirectory dire=ecosystem.getOrderdirectory();
-        ArrayList<Order> order=dire.getOd();
-        order.add(o);
+        
 }
         
         

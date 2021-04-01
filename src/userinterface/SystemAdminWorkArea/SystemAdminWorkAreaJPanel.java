@@ -11,10 +11,12 @@ import Business.EcoSystem;
 
 import Business.Organization;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import userinterface.loginpage;
 
 /**
  *
@@ -74,21 +76,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        jButton1.setText("customer");
+        jButton1.setText("Manage Customer ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("manager");
+        jButton2.setText("Manage Restaurant Manager ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("delivary");
+        jButton3.setText("Manage Delivery Man");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -153,8 +155,18 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:        
         DB4OUtil.dB4OUtil.storeSystem(ecosystem);
+        backAction();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void backAction() {
+        container.remove(this);
+        Component[] componentArray = container.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        loginpage manageSuppliersJPanel = (loginpage) component;        
+        CardLayout layout = (CardLayout) container.getLayout();
+        layout.previous(container);
+    }
+    
     public void callCustomerFrame()
     {
         CustomerFrame cf=new CustomerFrame(container,ecosystem);

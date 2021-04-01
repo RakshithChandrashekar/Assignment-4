@@ -126,7 +126,7 @@ public abstract class Organization {
     }
 
     public DeliveryManDirectory getDeliveryManDirectory() {
-        System.out.println("shata1");
+        
         if(deliveryManDirectory == null){
             deliveryManDirectory = new DeliveryManDirectory();
         }
