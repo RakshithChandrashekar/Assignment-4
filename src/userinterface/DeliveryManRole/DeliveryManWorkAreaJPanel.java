@@ -6,6 +6,7 @@ package userinterface.DeliveryManRole;
 
 import Business.Customer.Order;
 import Business.Customer.OrderDirectory;
+import Business.DB4OUtil.DB4OUtil;
 import Business.DeliveryMan.DeliveryMan;
 import Business.EcoSystem;
 
@@ -13,10 +14,13 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import userinterface.SystemAdminWorkArea.SystemAdminWorkAreaJPanel;
+import userinterface.loginpage;
 
 /**
  *
@@ -83,6 +87,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         processJButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -112,7 +117,15 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 620, 120));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 620, 120));
+
+        jLabel1.setText("<<back");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -161,13 +174,13 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             Order o=ol.get(i);
             if(s==o.getId())
             {
-                if(o.getStatus().matches("Deliver Man Assigned"))
+                if(o.getStatus().matches("out for delivery"))
                 {
                 o.setStatus("delivered");
                 }
                 else
                 {
-                    JOptionPane.showMessageDialog(null, "Orger is not ready yet");
+                    JOptionPane.showMessageDialog(null, "assign it to your self");
                 }
             }
             
@@ -176,8 +189,24 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         populateTable();
     }//GEN-LAST:event_processJButtonActionPerformed
 
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        // TODO add your handling code here:
+        backAction();
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void backAction() {
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        loginpage manageSuppliersJPanel = (loginpage) component;        
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        DB4OUtil.dB4OUtil.storeSystem(business);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton processJButton;

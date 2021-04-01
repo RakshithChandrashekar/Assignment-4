@@ -16,6 +16,7 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import userinterface.CustomerRole.customer_main;
@@ -186,8 +187,16 @@ public class assigndeliverymanname extends javax.swing.JPanel {
             Order o=ol.get(i);
             if(s==o.getId())
             {
-                o.setDelivaryman(delivaryman);
-                o.setStatus("Deliver Man Assigned");
+                if(o.getStatus().matches("out for delivery")||o.getStatus().matches("delivered"))
+                {
+                    JOptionPane.showMessageDialog(null, "status cannot be changed");
+                }
+                else
+                {
+                    o.setDelivaryman(delivaryman);
+                    o.setStatus("Deliver Man Assigned");  
+                }
+                
             }
             
         }
@@ -200,10 +209,18 @@ public class assigndeliverymanname extends javax.swing.JPanel {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         // TODO add your handling code here:
-        
+         backAction();
         
     }//GEN-LAST:event_jLabel1MouseClicked
 
+    private void backAction() {
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        manageorder manageSuppliersJPanel = (manageorder) component;        
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

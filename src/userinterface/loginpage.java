@@ -5,9 +5,16 @@
  */
 package userinterface;
 
+import Business.Customer.Customer;
+import Business.Customer.CustomerDirectory;
+import Business.DeliveryMan.DeliveryMan;
+import Business.DeliveryMan.DeliveryManDirectory;
 import Business.EcoSystem;
+import Business.Restaurant.Restaurant;
+import Business.Restaurant.RestaurantDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import userinterface.CustomerRole.CustomerAreaJPanel;
@@ -155,21 +162,73 @@ public class loginpage extends javax.swing.JPanel {
             jPasswordField1.setText("");
             System.out.println(userAccount.getRole());
             String a=(userAccount.getRole().toString());
+            
             if(a.equals("Business.Role.SystemAdminRole"))
             {
                 callSystemAdminWorkAreaJPanel();
+                
             }
             else if(a.equals("Business.Role.CustomerRole"))
             {
+                CustomerDirectory cd=system.getCustomerDirectory();
+                ArrayList<Customer> c=cd.getA();
+                int size=c.size();
+                int count=0;
+                for(int i=0;i<size;i++)
+                {
+                Customer c1=c.get(i);
+                if(userAccount.getUsername().matches(c1.getUsername()))
+                {
                 callCustomerAreaJPanel();
+                count+=1;
+                }            
+                }
+                if(count==0)
+                {
+                  JOptionPane.showMessageDialog(null, "Invalid credentials");  
+                }
             }
             else if(a.equals("Business.Role.AdminRole"))
             {
+                
+                RestaurantDirectory cd=system.getRestaurantDirectory();
+                ArrayList<Restaurant> c=cd.getRestaurantList();
+                int size=c.size();
+                int count=0;
+                for(int i=0;i<size;i++)
+                {
+                Restaurant c1=c.get(i);
+                if(userAccount.getUsername().matches(c1.getUsername()))
+                {
                 callAdminWorkAreaJPanel();
+                count+=1;
+                }            
+                }
+                if(count==0)
+                {
+                  JOptionPane.showMessageDialog(null, "Invalid credentials");  
+                }
             }
             else
             {
+                
+                DeliveryManDirectory cd=system.getDeliveryManDirectory();
+                ArrayList<DeliveryMan> c=cd.getDeliveryManList();
+                int size=c.size();
+                int count=0;
+                for(int i=0;i<size;i++)
+                {
+                DeliveryMan c1=c.get(i);
+                if(userAccount.getUsername().matches(c1.getUsername()))
+                {
                 callDeliveryManWorkAreaJPanel();
+                count+=1;
+                }            
+                }
+                if(count==0)
+                {
+                  JOptionPane.showMessageDialog(null, "Invalid credentials");  
+                }
             }
             
             
