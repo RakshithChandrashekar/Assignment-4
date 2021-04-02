@@ -107,7 +107,7 @@ public class assigndeliverymanname extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+                "ID", "Customer", "Restaurant Name", "Delivery Partner", "Stauts", "Message"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

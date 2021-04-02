@@ -79,12 +79,22 @@ public class resturantframe extends javax.swing.JPanel {
                 jTextField1ActionPerformed(evt);
             }
         });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
 
-        jLabel2.setText("Address :");
+        jLabel2.setText("Location :");
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
+            }
+        });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
             }
         });
 
@@ -122,6 +132,12 @@ public class resturantframe extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         jLabel5.setText("Phone Number:");
+
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField5KeyPressed(evt);
+            }
+        });
 
         jButton3.setText("Delete");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -344,6 +360,48 @@ private void populateTable() {
         // TODO add your handling code here:
         backAction();
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jTextField5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyPressed
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(Character.isLetter(c))
+        {
+            jTextField5.setEditable(false);
+            JOptionPane.showMessageDialog(null, "enter number");
+        }
+        else
+        {
+            jTextField5.setEditable(true);
+        }
+    }//GEN-LAST:event_jTextField5KeyPressed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(Character.isDigit(c))
+        {
+            jTextField1.setEditable(false);
+            JOptionPane.showMessageDialog(null, "enter Alphabets");
+        }
+        else
+        {
+            jTextField1.setEditable(true);
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(Character.isDigit(c))
+        {
+            jTextField2.setEditable(false);
+            JOptionPane.showMessageDialog(null, "enter Alphabets");
+        }
+        else
+        {
+            jTextField2.setEditable(true);
+        }
+    }//GEN-LAST:event_jTextField2KeyPressed
     
     private void backAction() {
         container.remove(this);

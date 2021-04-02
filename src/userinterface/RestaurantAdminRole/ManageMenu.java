@@ -12,6 +12,7 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -78,6 +79,12 @@ public class ManageMenu extends javax.swing.JPanel {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField2KeyPressed(evt);
+            }
+        });
 
         jButton1.setText("Add ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -197,6 +204,20 @@ public class ManageMenu extends javax.swing.JPanel {
         menu.remove(key);
         populateTable();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        // TODO add your handling code here:
+        char c=evt.getKeyChar();
+        if(Character.isLetter(c))
+        {
+            jTextField2.setEditable(false);
+            JOptionPane.showMessageDialog(null, "enter number");
+        }
+        else
+        {
+            jTextField2.setEditable(true);
+        }
+    }//GEN-LAST:event_jTextField2KeyPressed
     
     private void backAction() {
         container.remove(this);

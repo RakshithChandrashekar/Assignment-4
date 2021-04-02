@@ -140,7 +140,7 @@ public class customer_main extends javax.swing.JPanel {
 
         jLabel2.setText("Customer Work Area");
 
-        jLabel1.setText("<<back");
+        jLabel1.setText("<<logout");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
