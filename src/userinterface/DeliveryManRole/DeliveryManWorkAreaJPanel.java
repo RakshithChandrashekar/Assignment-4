@@ -87,37 +87,43 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
         processJButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        assignJButton.setText("Assign to me");
+        assignJButton.setText("Order Colleceted ");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignJButtonActionPerformed(evt);
             }
         });
-        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 215, -1, -1));
+        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, -1, -1));
 
-        processJButton.setText("Process");
+        processJButton.setText("Order Delivered ");
         processJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 processJButtonActionPerformed(evt);
             }
         });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 215, -1, -1));
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
+                "Order ID", "Customer Name", "Restaurant Name", "Assigned To ", "Status", "Message "
             }
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 620, 120));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 650, 120));
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("<<back");
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -125,7 +131,12 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
                 jLabel1MouseClicked(evt);
             }
         });
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 20, -1, -1));
+
+        jLabel2.setText("Orders");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 70));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -156,7 +167,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             
             
         }
-        jTable1.setModel(new DefaultTableModel(null,new String[]{"ID","customer name","resturant name","delivery name ","status","message"}));
+        jTable1.setModel(new DefaultTableModel(null,new String[]{"Order ID","Customer Name","Resturant Name","Assigned TO","Status","Message"}));
         populateTable();
         
     }//GEN-LAST:event_assignJButtonActionPerformed
@@ -185,7 +196,7 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
             }
             
         }
-        jTable1.setModel(new DefaultTableModel(null,new String[]{"ID","customer name","resturant name","delivery name ","status","message"}));
+        jTable1.setModel(new DefaultTableModel(null,new String[]{"Order ID","Customer Name","Resturant Name","Assigned TO","Status","Message"}));
         populateTable();
     }//GEN-LAST:event_processJButtonActionPerformed
 
@@ -207,6 +218,8 @@ public class DeliveryManWorkAreaJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton processJButton;

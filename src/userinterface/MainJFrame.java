@@ -34,7 +34,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
-        this.setSize(800, 600);
+        this.setSize(701, 600);
         this.setResizable(false);
         setadminpage();
     }
